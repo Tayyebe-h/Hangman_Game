@@ -75,24 +75,25 @@ for _ in range(word_length):
 
 while not end_of_game:
  guess = input("Guess a letter: ").lower()
- exists = False
 
  for position in range(word_length):
     letter = chosen_word[position]
     if letter == guess:
         display[position] = letter
-        exists = True
 
- if not exists:
+
+ if guess not in chosen_word:
       lives -= 1
+      if lives == 0:
+        end_of_game = True
+        print("You lose.")
  
  print(f"{' '.join(display)}")
- print(stages[lives]) 
-
+ 
  if not "_" in display:
      end_of_game = True
      print("You win.")
- if lives == 0:
-      end_of_game = True
-      print("You lose.")
+
+ print(stages[lives]) 
+ 
 
